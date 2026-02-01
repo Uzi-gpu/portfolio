@@ -39,15 +39,29 @@ const itemVariants = {
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2800)
+    }, isMobile ? 1800 : 2800) // Faster loading on mobile
     return () => clearTimeout(timer)
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
+    // Only track mouse on desktop
+    if (isMobile) return
+
     const handleMouseMove = (e) => {
       setMousePosition({
         x: e.clientX,
@@ -56,7 +70,7 @@ function App() {
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+  }, [isMobile])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -78,27 +92,29 @@ function App() {
         <div className="gradient-mesh-orb gradient-mesh-orb-3" />
       </div>
 
-      {/* Custom Cursor */}
-      <CustomCursor />
+      {/* Custom Cursor - Desktop only */}
+      {!isMobile && <CustomCursor />}
 
       {/* Scroll Progress Indicator */}
       <ScrollProgress />
 
-      {/* Subtle mouse follower */}
-      <motion.div
-        className="fixed w-[400px] h-[400px] rounded-full pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.04) 40%, transparent 70%)',
-          left: mousePosition.x,
-          top: mousePosition.y,
-          x: '-50%',
-          y: '-50%',
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 6, repeat: Infinity }}
-      />
+      {/* Subtle mouse follower - Desktop only */}
+      {!isMobile && (
+        <motion.div
+          className="fixed w-[400px] h-[400px] rounded-full pointer-events-none z-0"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.04) 40%, transparent 70%)',
+            left: mousePosition.x,
+            top: mousePosition.y,
+            x: '-50%',
+            y: '-50%',
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+      )}
 
       {/* Noise overlay */}
       <div className="noise-overlay" />
