@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Github, ExternalLink, FolderGit2, Brain, Eye, MessageSquare, Cpu, Layers, Star, GitFork, Zap } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Github, ExternalLink, FolderGit2, Brain, Eye, MessageSquare, Cpu, Layers, Star, GitFork, Zap, Code } from 'lucide-react'
 
 const projects = [
+  // AI Projects
   {
     title: 'MeetMind AI',
     subtitle: 'Final Year Project',
@@ -13,7 +14,6 @@ const projects = [
     demo: 'https://meetmind-demo.vercel.app',
     stars: 45,
     forks: 12,
-    gradient: 'from-blue-500 to-cyan-500',
     featured: true,
     category: 'AI Assistant'
   },
@@ -27,7 +27,6 @@ const projects = [
     demo: null,
     stars: 128,
     forks: 34,
-    gradient: 'from-emerald-500 to-teal-500',
     featured: false,
     category: 'Computer Vision'
   },
@@ -41,7 +40,6 @@ const projects = [
     demo: null,
     stars: 89,
     forks: 21,
-    gradient: 'from-indigo-500 to-violet-500',
     featured: false,
     category: 'NLP'
   },
@@ -55,7 +53,6 @@ const projects = [
     demo: null,
     stars: 67,
     forks: 18,
-    gradient: 'from-amber-500 to-orange-500',
     featured: false,
     category: 'Machine Learning'
   },
@@ -69,7 +66,6 @@ const projects = [
     demo: null,
     stars: 45,
     forks: 11,
-    gradient: 'from-green-500 to-emerald-500',
     featured: false,
     category: 'Data Science'
   },
@@ -83,9 +79,114 @@ const projects = [
     demo: null,
     stars: 156,
     forks: 42,
-    gradient: 'from-blue-500 to-indigo-500',
     featured: false,
     category: 'Machine Learning'
+  },
+  
+  // Web Development Projects
+  {
+    title: 'HyperCatalog (React Forms)',
+    subtitle: 'Web Development',
+    description: 'An advanced product catalog featuring custom React hooks, controlled form state, local image file uploads, and a premium UI theme.',
+    icon: Code,
+    technologies: ['React', 'Vite', 'JavaScript', 'CSS'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/project%202%20HyperCatalog',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/project%202%20HyperCatalog/dist/index.html',
+    stars: 12,
+    forks: 3,
+    featured: true,
+    category: 'Web App'
+  },
+  {
+    title: 'Product Catalog Store',
+    subtitle: 'Web Development',
+    description: 'A beautiful e-commerce storefront built with React and Vite, featuring data fetching via useEffect, cart state management, and modern CSS.',
+    icon: Code,
+    technologies: ['React', 'Vite', 'JavaScript'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/project%201%20product-store',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/project%201%20product-store/dist/index.html',
+    stars: 8,
+    forks: 2,
+    featured: false,
+    category: 'Web App'
+  },
+  {
+    title: 'React Pizza Shop',
+    subtitle: 'Web Development',
+    description: 'A full-stack React application featuring TanStack Router, TanStack Query, and a local SQLite API backend.',
+    icon: FolderGit2,
+    technologies: ['React', 'Node.js', 'SQLite'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/Pizza%20project',
+    demo: null,
+    stars: 15,
+    forks: 5,
+    featured: false,
+    category: 'Full-Stack'
+  },
+  {
+    title: 'iOS Style Calculator',
+    subtitle: 'Web Development',
+    description: 'A fully functional interactive calculator built with vanilla JavaScript, featuring state management and logic.',
+    icon: Code,
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/calculator%20project',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/calculator%20project/index.html',
+    stars: 5,
+    forks: 1,
+    featured: false,
+    category: 'Web App'
+  },
+  {
+    title: 'Coffee Masters',
+    subtitle: 'Web Development',
+    description: 'A responsive e-commerce menu and checkout page utilizing modern UI aesthetics and glassmorphism.',
+    icon: Layers,
+    technologies: ['HTML', 'CSS', 'UI/UX'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/coffee%20shop%20project',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/coffee%20shop%20project/index.html',
+    stars: 7,
+    forks: 2,
+    featured: false,
+    category: 'Web Design'
+  },
+  {
+    title: 'Class Dashboard',
+    subtitle: 'Web Development',
+    description: 'A JavaScript data-processing application that parses student scores and injects a dynamic dashboard into the DOM.',
+    icon: Code,
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/JS%20assessment',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/JS%20assessment/index.html',
+    stars: 4,
+    forks: 1,
+    featured: false,
+    category: 'Web App'
+  },
+  {
+    title: 'The News Times',
+    subtitle: 'Web Development',
+    description: 'A digital newspaper layout demonstrating advanced CSS Grid, flexbox positioning, and typography scaling.',
+    icon: Layers,
+    technologies: ['HTML', 'CSS Grid', 'Flexbox'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/second%20project',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/second%20project/index.html',
+    stars: 6,
+    forks: 2,
+    featured: false,
+    category: 'Web Design'
+  },
+  {
+    title: 'Uzair\'s Dev Log',
+    subtitle: 'Web Development',
+    description: 'A clean, structural semantic HTML blog with modern CSS typography and a focus on clean coding practices.',
+    icon: Code,
+    technologies: ['HTML', 'CSS'],
+    github: 'https://github.com/Uzi-gpu/full-stack-portfolio-/tree/main/first%20project',
+    demo: 'https://uzi-gpu.github.io/full-stack-portfolio-/first%20project/index.html',
+    stars: 3,
+    forks: 0,
+    featured: false,
+    category: 'Web Design'
   }
 ]
 
@@ -93,50 +194,36 @@ function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null)
 
   return (
-    <section id="projects" className="min-h-screen py-24 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/3 left-1/2 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[80px]"
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="projects" className="min-h-screen py-24 relative overflow-hidden bg-white border-t-4 border-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 border-b-4 border-black pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 mb-4"
-          >
-            <Zap size={14} className="text-blue-400" />
-            <span className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-              Portfolio
-            </span>
-          </motion.div>
-          <h2 className="section-title mt-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            A showcase of my work in AI, Machine Learning, and Deep Learning.
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-1 bg-black"></div>
+              <span className="text-black text-sm font-bold uppercase tracking-widest">
+                03 // Portfolio
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-black uppercase tracking-tight">
+              Featured <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px var(--border-primary)' }}>Projects</span>
+            </h2>
+          </div>
+          <p className="text-black font-medium max-w-md leading-relaxed text-lg bg-gray-50 border-2 border-black p-4 shadow-[4px_4px_0px_0px_var(--shadow-color)]">
+            A showcase of my work in AI, Machine Learning, and Full-Stack Web Development.
             From research to production-ready solutions.
           </p>
         </motion.div>
 
-        {/* Featured Project */}
-        {projects.filter(p => p.featured).map((project) => (
+        {/* Featured Projects */}
+        {projects.filter(p => p.featured).map((project, idx) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 25 }}
@@ -145,120 +232,81 @@ function Projects() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <div className="glass-card overflow-hidden relative">
-              {/* Subtle glow */}
-              <motion.div
-                className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at 0% 50%, ${project.gradient.includes('cyan') ? 'rgba(59, 130, 246,' : 'rgba(16, 185, 129,'}0.2) 0%, transparent 50%)`
-                }}
-              />
-
-              <div className="grid lg:grid-cols-2 gap-0 relative z-10">
-                {/* Project Preview */}
-                <motion.div
-                  className={`p-8 bg-gradient-to-br ${project.gradient} flex items-center justify-center min-h-[320px] relative overflow-hidden`}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Subtle pattern */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 0%, transparent 50%)`,
-                      backgroundSize: '30px 30px'
-                    }}
-                  />
-
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="w-32 h-32 rounded-xl bg-slate-900/50 backdrop-blur-xl flex items-center justify-center relative"
-                  >
-                    <project.icon size={60} className="text-white" />
-                    <motion.div
-                      className="absolute inset-0 rounded-xl bg-white/5 blur-xl"
-                      animate={{ opacity: [0.2, 0.4, 0.2] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  </motion.div>
-
-                  {/* Category badge */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -15 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="absolute top-4 left-4 px-3 py-1 rounded-lg bg-slate-900/50 backdrop-blur-sm text-xs font-medium text-white"
-                  >
-                    {project.category}
-                  </motion.div>
-                </motion.div>
-
+            <div className="border-4 border-black bg-white shadow-[12px_12px_0px_0px_var(--shadow-color)] hover:shadow-[16px_16px_0px_0px_var(--shadow-color)] hover:-translate-y-1 transition-all duration-300">
+              <div className="grid lg:grid-cols-2 gap-0">
                 {/* Project Info */}
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-sm text-slate-500">
-                      {project.subtitle}
+                <div className={`p-8 lg:p-12 flex flex-col justify-center border-b-4 lg:border-b-0 ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:border-r-4'} border-black`}>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-3 py-1 bg-black text-white text-xs font-bold uppercase tracking-wider">
+                      {project.category}
                     </span>
-                    <div className="flex items-center gap-3 text-xs text-slate-500">
+                    <div className="flex items-center gap-4 text-xs font-bold text-black uppercase tracking-wider">
                       <span className="flex items-center gap-1">
-                        <Star size={12} className="text-amber-400" fill="currentColor" />
+                        <Star size={14} />
                         {project.stars}
                       </span>
                       <span className="flex items-center gap-1">
-                        <GitFork size={12} className="text-slate-400" />
+                        <GitFork size={14} />
                         {project.forks}
                       </span>
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-4 text-black uppercase tracking-tight">
                     {project.title}
                   </h3>
 
-                  <p className="text-slate-400 mb-6 leading-relaxed">
+                  <p className="text-black font-medium mb-8 leading-relaxed text-lg">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {project.technologies.map((tech) => (
-                      <motion.span
+                      <span
                         key={tech}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        whileHover={{ scale: 1.03 }}
-                        className="skill-tag cursor-default"
+                        className="px-3 py-1 text-sm font-bold border-2 border-black text-black uppercase tracking-wider bg-white"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-3">
-                    <motion.a
+                  <div className="flex flex-wrap gap-4 mt-auto">
+                    <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all duration-300 group"
+                      className="flex items-center gap-2 px-6 py-3 border-2 border-black bg-white text-black font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-colors duration-200"
                     >
-                      <Github size={16} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
-                      <span className="font-medium text-sm">View Code</span>
-                    </motion.a>
+                      <Github size={20} strokeWidth={2.5} />
+                      Code
+                    </a>
                     {project.demo && (
-                      <motion.a
+                      <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium hover:opacity-90 transition-all duration-300"
+                        className="flex items-center gap-2 px-6 py-3 border-2 border-black bg-black text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-200 shadow-[4px_4px_0px_0px_var(--shadow-color)] hover:shadow-none"
                       >
-                        <ExternalLink size={16} />
-                        <span className="font-semibold text-sm">Live Demo</span>
-                      </motion.a>
+                        <ExternalLink size={20} strokeWidth={2.5} />
+                        Live Demo
+                      </a>
                     )}
+                  </div>
+                </div>
+
+                {/* Project Preview */}
+                <div className={`bg-gray-100 flex items-center justify-center p-12 min-h-[400px] relative overflow-hidden ${idx % 2 !== 0 ? 'lg:order-1 lg:border-r-4 border-black' : ''}`}>
+                  {/* Schematic grid */}
+                  <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: 'linear-gradient(to right, black 1px, transparent 1px), linear-gradient(to bottom, black 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                  
+                  <div className="w-48 h-48 border-4 border-black bg-white flex flex-col items-center justify-center relative z-10 shadow-[8px_8px_0px_0px_var(--shadow-color)] hover:scale-105 transition-transform duration-300">
+                    <project.icon size={64} strokeWidth={1.5} className="text-black mb-4" />
+                    <span className="font-extrabold uppercase tracking-widest text-sm">{project.subtitle}</span>
+                    
+                    {/* Decorative corners */}
+                    <div className="absolute top-2 left-2 w-3 h-3 border-t-4 border-l-4 border-black"></div>
+                    <div className="absolute bottom-2 right-2 w-3 h-3 border-b-4 border-r-4 border-black"></div>
                   </div>
                 </div>
               </div>
@@ -267,97 +315,91 @@ function Projects() {
         ))}
 
         {/* Other Projects Grid */}
+        <div className="flex items-center gap-4 mb-10 mt-24">
+          <div className="w-8 h-1 bg-black"></div>
+          <h3 className="text-2xl font-extrabold text-black uppercase tracking-tight">More Projects</h3>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.filter(p => !p.featured).map((project, index) => (
-            <motion.div
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
-              onHoverStart={() => setHoveredProject(project.title)}
-              onHoverEnd={() => setHoveredProject(null)}
-              className="project-card group relative"
+              onMouseEnter={() => setHoveredProject(project.title)}
+              onMouseLeave={() => setHoveredProject(null)}
+              className="border-4 border-black bg-white flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_var(--shadow-color)] group"
             >
-              {/* Subtle glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at center, ${project.gradient.includes('cyan') ? 'rgba(59, 130, 246, 0.08)' : project.gradient.includes('emerald') ? 'rgba(16, 185, 129, 0.08)' : 'rgba(99, 102, 241, 0.08)'} 0%, transparent 70%)`
-                }}
-              />
-
-              {/* Icon */}
-              <div className="flex justify-between items-start mb-4 relative z-10">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className={`p-2.5 rounded-lg bg-gradient-to-br ${project.gradient} bg-opacity-10`}
-                >
-                  <project.icon size={20} className="text-white" />
-                </motion.div>
-                <motion.a
+              {/* Header/Icon */}
+              <div className="flex justify-between items-start p-6 border-b-4 border-black bg-gray-50 group-hover:bg-black transition-colors duration-300">
+                <div className="w-12 h-12 border-2 border-black bg-white flex items-center justify-center">
+                  <project.icon size={24} strokeWidth={2} className="text-black" />
+                </div>
+                <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                  className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                  className="text-black group-hover:text-white transition-colors duration-300"
                 >
-                  <Github size={18} />
-                </motion.a>
+                  <Github size={24} strokeWidth={2.5} />
+                </a>
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300 relative z-10">
-                {project.title}
-              </h3>
+              <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold bg-black text-white px-2 py-1 uppercase tracking-wider">
+                    {project.category}
+                  </span>
+                  <div className="flex items-center gap-3 text-xs font-bold text-black uppercase">
+                    <span className="flex items-center gap-1"><Star size={12} strokeWidth={3} /> {project.stars}</span>
+                    <span className="flex items-center gap-1"><GitFork size={12} strokeWidth={3} /> {project.forks}</span>
+                  </div>
+                </div>
 
-              <p className="text-slate-500 text-sm mb-4 line-clamp-2 relative z-10">
-                {project.description}
-              </p>
+                <h3 className="text-xl font-extrabold mb-3 text-black uppercase tracking-tight">
+                  {project.title}
+                </h3>
 
-              {/* GitHub stats */}
-              <div className="flex items-center gap-4 mb-4 text-xs text-slate-500 relative z-10">
-                <span className="flex items-center gap-1">
-                  <Star size={12} className="text-amber-400" fill="currentColor" />
-                  {project.stars}
-                </span>
-                <span className="flex items-center gap-1">
-                  <GitFork size={12} className="text-slate-400" />
-                  {project.forks}
-                </span>
-                <span className="px-2 py-0.5 rounded-lg bg-slate-800/50 text-xs">
-                  {project.category}
-                </span>
-              </div>
+                <p className="text-gray-700 font-medium text-sm mb-6 line-clamp-3 leading-relaxed">
+                  {project.description}
+                </p>
 
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 relative z-10">
-                {project.technologies.map((tech) => (
-                  <motion.span
-                    key={tech}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.03 }}
-                    className="skill-tag cursor-default text-xs"
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mt-auto mb-6">
+                  {project.technologies.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-[10px] font-bold border-2 border-black text-black uppercase tracking-wider bg-white"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="px-2 py-1 text-[10px] font-bold border-2 border-black text-white bg-black uppercase tracking-wider">
+                      +{project.technologies.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                {/* Demo Link if available */}
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2 border-2 border-black bg-black text-white font-bold uppercase text-xs tracking-wider hover:bg-white hover:text-black transition-colors duration-200 mt-auto"
                   >
-                    {tech}
-                  </motion.span>
-                ))}
+                    <ExternalLink size={14} strokeWidth={2.5} />
+                    View Demo
+                  </a>
+                )}
               </div>
-
-              {/* Bottom accent */}
-              <div
-                className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${project.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                style={{ width: '100%' }}
-              />
-            </motion.div>
+            </div>
           ))}
         </motion.div>
 
@@ -367,23 +409,21 @@ function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-24 text-center"
         >
-          <motion.a
+          <a
             href="https://github.com/Uzi-gpu"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-lg border border-slate-700/50 hover:border-blue-500/30 hover:bg-blue-500/10 transition-all duration-300 group"
+            className="inline-flex items-center gap-4 px-8 py-4 border-4 border-black bg-white text-black hover:bg-black hover:text-white transition-all duration-300 group shadow-[8px_8px_0px_0px_var(--shadow-color)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
           >
-            <Github size={20} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
-            <div className="text-left">
-              <div className="font-medium text-sm">View All Projects</div>
-              <div className="text-xs text-slate-500">on GitHub</div>
+            <Github size={28} strokeWidth={2.5} />
+            <div className="text-left flex flex-col">
+              <span className="font-extrabold uppercase tracking-widest text-lg leading-tight">View All Projects</span>
+              <span className="text-xs font-bold uppercase tracking-widest opacity-70">On GitHub</span>
             </div>
-            <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-400 transition-colors" />
-          </motion.a>
+            <ExternalLink size={20} strokeWidth={3} className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
         </motion.div>
       </div>
     </section>

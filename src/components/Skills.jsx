@@ -16,48 +16,36 @@ const skillCategories = [
     title: 'Machine Learning & Deep Learning',
     icon: Brain,
     skills: ['PyTorch', 'TensorFlow', 'Keras', 'Scikit-learn', 'Neural Networks'],
-    color: 'from-blue-500 to-cyan-500',
-    glowColor: 'rgba(59, 130, 246, 0.15)',
     description: 'Building and training sophisticated neural networks'
   },
   {
     title: 'Computer Vision',
     icon: Eye,
     skills: ['OpenCV', 'Object Detection', 'CNN', 'Image Processing', 'YOLO'],
-    color: 'from-emerald-500 to-teal-500',
-    glowColor: 'rgba(16, 185, 129, 0.15)',
     description: 'Teaching machines to understand visual data'
   },
   {
     title: 'Natural Language Processing',
     icon: MessageSquare,
     skills: ['NLP', 'Text Processing', 'Sentiment Analysis', 'Text Generation', 'NLTK'],
-    color: 'from-indigo-500 to-violet-500',
-    glowColor: 'rgba(99, 102, 241, 0.15)',
     description: 'Enabling computers to understand human language'
   },
   {
     title: 'AI & Generative AI',
     icon: Cpu,
     skills: ['Deep Learning', 'Reinforcement Learning', 'GenAI', 'Speech-to-Text'],
-    color: 'from-amber-500 to-orange-500',
-    glowColor: 'rgba(245, 158, 11, 0.15)',
     description: 'Creating intelligent systems that learn and adapt'
   },
   {
     title: 'Programming & Tools',
     icon: Code2,
     skills: ['Python', 'Git', 'Jupyter', 'PostgreSQL', 'Docker'],
-    color: 'from-green-500 to-emerald-500',
-    glowColor: 'rgba(34, 197, 94, 0.15)',
     description: 'Essential tools for modern development'
   },
   {
     title: 'Data & Analytics',
     icon: LineChart,
     skills: ['Data Mining', 'Data Preprocessing', 'Clustering', 'Data Visualization'],
-    color: 'from-blue-500 to-indigo-500',
-    glowColor: 'rgba(59, 130, 246, 0.15)',
     description: 'Extracting insights from complex datasets'
   }
 ]
@@ -70,58 +58,39 @@ function Skills() {
   }
 
   return (
-    <section id="skills" className="min-h-screen flex items-center py-24 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[80px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.1, 1, 1.1],
-            x: [0, -30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity }}
-          className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[80px]"
-        />
-      </div>
+    <section id="skills" className="min-h-screen flex items-center py-24 relative overflow-hidden bg-gray-50 border-t-4 border-black">
+      {/* Schematic background pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, black 1px, transparent 1px), linear-gradient(to bottom, black 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 border-b-4 border-black pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 mb-4"
-          >
-            <Zap size={14} className="text-blue-400" />
-            <span className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-              Expertise
-            </span>
-          </motion.div>
-          <h2 className="section-title mt-4">
-            Skills & <span className="gradient-text">Technologies</span>
-          </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto leading-relaxed">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-1 bg-black"></div>
+              <span className="text-black text-sm font-bold uppercase tracking-widest">
+                02 // Expertise
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-black uppercase tracking-tight">
+              Skills & <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Technologies</span>
+            </h2>
+          </div>
+          <p className="text-black font-medium max-w-md leading-relaxed text-lg bg-white border-2 border-black p-4 shadow-[4px_4px_0px_0px_var(--shadow-color)]">
             A comprehensive toolkit for building intelligent systems, from data preprocessing
             to model deployment.
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -129,43 +98,28 @@ function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.08 }}
-              whileHover={{ y: -4 }}
               onClick={() => toggleCategory(categoryIndex)}
-              className="glass-card-hover overflow-hidden group cursor-pointer"
+              className="border-4 border-black bg-white group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_var(--shadow-color)]"
             >
-              {/* Glow effect on hover */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0"
-                style={{
-                  background: `radial-gradient(circle at center, ${category.glowColor} 0%, transparent 70%)`
-                }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-
               {/* Header */}
-              <div className="relative p-6 pb-4">
-                <div className="flex items-center justify-between mb-3">
-                  <motion.div
-                    className={`p-2.5 rounded-lg bg-gradient-to-br ${category.color} bg-opacity-10`}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                  >
-                    <category.icon size={20} className="text-white" />
-                  </motion.div>
+              <div className="relative p-6 pb-4 border-b-4 border-transparent group-hover:border-black transition-colors duration-300">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-14 h-14 border-4 border-black flex items-center justify-center bg-black text-white group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <category.icon size={24} strokeWidth={2.5} />
+                  </div>
                   <motion.div
                     animate={{ rotate: expandedCategory === categoryIndex ? 180 : 0 }}
                     transition={{ duration: 0.25 }}
-                    className="text-slate-500"
+                    className="text-black border-2 border-black p-1"
                   >
-                    <ChevronDown size={18} />
+                    <ChevronDown size={20} strokeWidth={3} />
                   </motion.div>
                 </div>
 
-                <h3 className="font-medium text-lg text-white group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="font-extrabold text-xl text-black uppercase tracking-tight mb-2">
                   {category.title}
                 </h3>
-                <p className="text-sm text-slate-500 mt-1">{category.description}</p>
+                <p className="text-sm font-medium text-gray-600">{category.description}</p>
               </div>
 
               {/* Expandable skills */}
@@ -176,9 +130,9 @@ function Skills() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="px-6 pb-6"
+                    className="px-6 pb-6 overflow-hidden"
                   >
-                    <div className="pt-4 border-t border-slate-700/50">
+                    <div className="pt-4 border-t-2 border-black">
                       <div className="flex flex-wrap gap-2">
                         {category.skills.map((skill, skillIndex) => (
                           <motion.span
@@ -186,8 +140,8 @@ function Skills() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: skillIndex * 0.05 }}
-                            whileHover={{ scale: 1.03 }}
-                            className="skill-tag cursor-default"
+                            whileHover={{ scale: 1.05 }}
+                            className="px-3 py-1 text-sm font-bold border-2 border-black text-white bg-black uppercase tracking-wider"
                           >
                             {skill}
                           </motion.span>
@@ -214,23 +168,18 @@ function Skills() {
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: categoryIndex * 0.08 + skillIndex * 0.05 }}
-                          className="skill-tag cursor-default text-slate-400"
+                          className="px-2 py-1 text-xs font-bold border-2 border-black text-black uppercase tracking-wider bg-white"
                         >
                           {skill}
                         </motion.span>
                       ))}
-                      <span className="skill-tag cursor-default text-slate-500">
+                      <span className="px-2 py-1 text-xs font-bold border-2 border-black text-white bg-black">
                         +{category.skills.length - 3}
                       </span>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Bottom accent line */}
-              <motion.div
-                className={`h-0.5 bg-gradient-to-r ${category.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-              />
             </motion.div>
           ))}
         </div>
@@ -241,23 +190,28 @@ function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { label: 'Years Experience', value: '2+', icon: '⏱️' },
-            { label: 'Projects Completed', value: '10+', icon: '🚀' },
-            { label: 'Technologies', value: '20+', icon: '⚡' },
-            { label: 'Coffee Consumed', value: '∞', icon: '☕' }
+            { label: 'Years Experience', value: '2+', icon: 'T-01' },
+            { label: 'Projects Completed', value: '10+', icon: 'P-02' },
+            { label: 'Technologies', value: '20+', icon: 'S-03' },
+            { label: 'System Uptime', value: '99%', icon: 'M-04' }
           ].map((stat) => (
-            <motion.div
+            <div
               key={stat.label}
-              whileHover={{ y: -3, scale: 1.02 }}
-              className="glass-card p-5 text-center"
+              className="border-4 border-black bg-white p-6 relative group hover:bg-black transition-colors duration-300"
             >
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-2xl font-semibold gradient-text">{stat.value}</div>
-              <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
-            </motion.div>
+              <div className="absolute top-2 right-2 text-xs font-extrabold tracking-widest text-gray-400 group-hover:text-gray-600">
+                {stat.icon}
+              </div>
+              <div className="text-4xl font-extrabold text-black mb-2 group-hover:text-white group-hover:text-transparent group-hover:[-webkit-text-stroke:2px_white] transition-all duration-300">
+                {stat.value}
+              </div>
+              <div className="text-sm font-bold uppercase tracking-wider text-gray-500 group-hover:text-gray-300">
+                {stat.label}
+              </div>
+            </div>
           ))}
         </motion.div>
       </div>

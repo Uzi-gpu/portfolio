@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -11,6 +12,20 @@ export default {
         display: ['Space Grotesk', 'monospace'],
       },
       colors: {
+        white: 'rgb(var(--bg-primary) / <alpha-value>)',
+        black: 'rgb(var(--border-primary) / <alpha-value>)',
+        gray: {
+          50: 'rgb(var(--bg-secondary) / <alpha-value>)',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',

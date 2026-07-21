@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github, Linkedin, Mail, Terminal } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -13,6 +13,7 @@ const navItems = [
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,29 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    // Check initial theme
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+      if (storedTheme === 'dark') document.documentElement.classList.add('dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href)
@@ -37,45 +61,29 @@ function Navbar() {
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#030712]/90 backdrop-blur-2xl border-b border-slate-800/50'
-          : 'bg-transparent'
+          ? 'bg-white border-b-2 border-black'
+          : 'bg-white border-b-2 border-black'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Uzi-Gpu */}
+          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2.5 cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => scrollToSection('#home')}
           >
-            <div className="relative">
-              <motion.div
-                animate={{
-                  boxShadow: [
-                    "0 0 15px rgba(59, 130, 246, 0.2)",
-                    "0 0 25px rgba(16, 185, 129, 0.2)",
-                    "0 0 15px rgba(59, 130, 246, 0.2)"
-                  ]
-                }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border border-slate-700/50"
-              >
-                <Terminal size={18} className="text-slate-300" />
-              </motion.div>
-            </div>
             <div className="flex flex-col">
-              <span className="font-medium text-base tracking-tight">
-                <span className="text-white">Uzi</span>
-                <span className="text-slate-500">-</span>
-                <span className="text-slate-400">Gpu</span>
+              <span className="font-extrabold text-lg tracking-tight uppercase text-black">
+                Uzair Bin Mubasher
               </span>
-              <span className="text-[10px] text-slate-600 font-medium uppercase tracking-wider">AI Engineer</span>
+              <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">AI Engineer</span>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -83,24 +91,33 @@ function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
                 onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-sm text-slate-400 font-medium transition-all duration-300 hover:text-white"
+                className="relative text-sm font-bold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5"
               >
-                <span className="relative z-10">{item.name}</span>
-                <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/5 to-emerald-500/5 opacity-0 transition-opacity duration-300"
-                  whileHover={{ opacity: 1 }}
-                />
+                {item.name}
               </motion.button>
             ))}
           </div>
 
-          {/* Social Links */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Social Links & Theme Toggle */}
+          <div className="hidden md:flex items-center gap-3">
+            <motion.button
+              onClick={toggleTheme}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-all duration-300 shadow-[2px_2px_0px_0px_var(--shadow-color)] hover:shadow-none"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'light' ? <Moon size={16} strokeWidth={2.5} /> : <Sun size={16} strokeWidth={2.5} />}
+            </motion.button>
+            <div className="w-px h-6 bg-black mx-1" />
             {[
-              { icon: Github, href: "https://github.com/Uzi-gpu", color: "hover:text-blue-400", delay: 0 },
-              { icon: Linkedin, href: "https://linkedin.com/in/uzair-bin-mubasher-208ba5164", color: "hover:text-indigo-400", delay: 0.05 },
-              { icon: Mail, href: "mailto:uzairmubasher5@gmail.com", color: "hover:text-emerald-400", delay: 0.1 }
-            ].map((social) => (
+              { icon: Github, href: "https://github.com/Uzi-gpu" },
+              { icon: Linkedin, href: "https://linkedin.com/in/uzair-bin-mubasher-208ba5164" },
+              { icon: Mail, href: "mailto:uzairmubasher5@gmail.com" }
+            ].map((social, i) => (
               <motion.a
                 key={social.href}
                 href={social.href}
@@ -108,29 +125,38 @@ function Navbar() {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4 + social.delay }}
+                transition={{ delay: 0.4 + i * 0.1 }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 ${social.color} transition-all duration-300`}
+                className="p-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-all duration-300 shadow-[2px_2px_0px_0px_var(--shadow-color)] hover:shadow-none"
               >
-                <social.icon size={16} />
+                <social.icon size={16} strokeWidth={2.5} />
               </motion.a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400"
-          >
-            <motion.div
-              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
+          <div className="md:hidden flex items-center gap-3">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleTheme}
+              className="p-2 border-2 border-black bg-white text-black"
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </motion.div>
-          </motion.button>
+              {theme === 'light' ? <Moon size={20} strokeWidth={3} /> : <Sun size={20} strokeWidth={3} />}
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 border-2 border-black bg-white text-black"
+            >
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMobileMenuOpen ? <X size={20} strokeWidth={3} /> : <Menu size={20} strokeWidth={3} />}
+              </motion.div>
+            </motion.button>
+          </div>
         </div>
       </div>
 
@@ -142,7 +168,7 @@ function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-[#030712]/95 backdrop-blur-xl border-b border-slate-800/50"
+            className="md:hidden bg-white border-b-2 border-black"
           >
             <div className="px-4 py-5 space-y-2">
               {navItems.map((item, index) => (
@@ -152,26 +178,25 @@ function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => scrollToSection(item.href)}
-                  className="w-full text-left px-4 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all duration-300 flex items-center gap-2 text-sm"
+                  className="w-full text-left px-4 py-3 font-bold uppercase tracking-wider text-black border-2 border-transparent hover:border-black transition-all duration-300"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
                   {item.name}
                 </motion.button>
               ))}
-              <div className="flex items-center gap-2 pt-4 border-t border-slate-800/50 mt-4">
+              <div className="flex items-center gap-4 pt-4 border-t-2 border-black mt-4">
                 {[
-                  { icon: Github, href: "https://github.com/Uzi-gpu", color: "hover:text-blue-400" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/uzair-bin-mubasher-208ba5164", color: "hover:text-indigo-400" },
-                  { icon: Mail, href: "mailto:uzairmubasher5@gmail.com", color: "hover:text-emerald-400" }
+                  { icon: Github, href: "https://github.com/Uzi-gpu" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/uzair-bin-mubasher-208ba5164" },
+                  { icon: Mail, href: "mailto:uzairmubasher5@gmail.com" }
                 ].map((social) => (
                   <a
                     key={social.href}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 ${social.color} transition-all duration-300`}
+                    className="p-3 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-all duration-300 shadow-[2px_2px_0px_0px_var(--shadow-color)] hover:shadow-none"
                   >
-                    <social.icon size={16} />
+                    <social.icon size={18} strokeWidth={2.5} />
                   </a>
                 ))}
               </div>
